@@ -13,6 +13,7 @@ import br.com.andreikeda.example.villageresourcemanagement.domain.models.Resourc
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.ResourceType.WOOD
 import br.com.andreikeda.example.villageresourcemanagement.domain.usecases.VillageCommands
 import br.com.andreikeda.example.villageresourcemanagement.domain.usecases.VillageUseCases
+import kotlin.random.Random
 
 object Game {
     enum class Status {
@@ -37,7 +38,10 @@ object Game {
         villageUseCase.run {
             gatherResources(village)
             consumeWheat(village)
-            // todo: call other methods
+            if ((village.resources[WHEAT]?.quantity ?: 0) > 0) {
+                villageUseCase.newUnitIsBorn(village, villageUseCase.unitsAvailableFromResourceFields(
+                    village).random())
+            }
         }
         return Status.ONGOING
     }
