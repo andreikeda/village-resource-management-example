@@ -7,6 +7,7 @@ import br.com.andreikeda.example.villageresourcemanagement.R
 import br.com.andreikeda.example.villageresourcemanagement.databinding.ActivityHomeBinding
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.Game
 import br.com.andreikeda.example.villageresourcemanagement.ui.buildings.BuildingsFragment
+import br.com.andreikeda.example.villageresourcemanagement.ui.resourcefields.ResourceFieldsFragment
 import br.com.andreikeda.example.villageresourcemanagement.ui.units.UnitsFragment
 import br.com.andreikeda.example.villageresourcemanagement.ui.village.VillageFragment
 
@@ -29,6 +30,7 @@ class HomeActivity: AppCompatActivity(), HomeContract.View, HomeContract.Router 
                     R.id.menu_buildings -> mPresenter.onMenuItemBuildingsClicked()
                     R.id.menu_village -> mPresenter.onMenuItemVillageClicked()
                     R.id.menu_units -> mPresenter.onMenuItemUnitsClicked()
+                    R.id.menu_resource_fields -> mPresenter.onMenuItemResourceFieldsClicked()
                 }
                 true
             }
@@ -52,6 +54,10 @@ class HomeActivity: AppCompatActivity(), HomeContract.View, HomeContract.Router 
         setTitle(R.string.title_buildings)
     }
 
+    override fun setResourceFieldsTitle() {
+        setTitle(R.string.title_resource_fields)
+    }
+
     override fun setVillageTitle() {
         setTitle(R.string.title_village)
     }
@@ -62,6 +68,10 @@ class HomeActivity: AppCompatActivity(), HomeContract.View, HomeContract.Router 
 
     override fun showBuildingsFragment() {
         replaceFragment(BuildingsFragment())
+    }
+
+    override fun showResourceFieldsFragment() {
+        replaceFragment(ResourceFieldsFragment())
     }
 
     override fun showVillageFragment() {

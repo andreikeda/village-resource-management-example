@@ -13,6 +13,11 @@ class HomePresenter(
         router.showBuildingsFragment()
     }
 
+    override fun onMenuItemResourceFieldsClicked() {
+        view.setResourceFieldsTitle()
+        router.showResourceFieldsFragment()
+    }
+
     override fun onMenuItemVillageClicked() {
         view.setVillageTitle()
         router.showVillageFragment()
