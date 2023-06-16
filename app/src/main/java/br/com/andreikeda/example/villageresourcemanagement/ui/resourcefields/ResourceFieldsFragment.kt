@@ -1,4 +1,4 @@
-package br.com.andreikeda.example.villageresourcemanagement.ui.buildings
+package br.com.andreikeda.example.villageresourcemanagement.ui.resourcefields
 
 import android.content.Context
 import android.os.Bundle
@@ -8,21 +8,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.andreikeda.example.villageresourcemanagement.R
-import br.com.andreikeda.example.villageresourcemanagement.databinding.FragmentBuildingBinding
-import br.com.andreikeda.example.villageresourcemanagement.domain.models.BuildingType
-import br.com.andreikeda.example.villageresourcemanagement.ui.buildings.adapter.BuildingsAdapter
+import br.com.andreikeda.example.villageresourcemanagement.databinding.FragmentResourceFieldBinding
+import br.com.andreikeda.example.villageresourcemanagement.domain.models.ResourceType
 import br.com.andreikeda.example.villageresourcemanagement.ui.home.HomeContract
-import br.com.andreikeda.example.villageresourcemanagement.ui.village.VillagePresenter
+import br.com.andreikeda.example.villageresourcemanagement.ui.resourcefields.adapter.ResourceFieldsAdapter
 import com.google.android.material.snackbar.Snackbar
 
-class BuildingsFragment: Fragment(), BuildingsContract.View {
-    private lateinit var binding: FragmentBuildingBinding
-    private lateinit var presenter: BuildingsContract.Presenter
+class ResourceFieldsFragment: Fragment(), ResourceFieldsContract.View {
+    private lateinit var binding: FragmentResourceFieldBinding
+    private lateinit var presenter: ResourceFieldsContract.Presenter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is HomeContract.View) {
-            presenter = BuildingsPresenter(context, this)
+            presenter = ResourceFieldsPresenter(context, this)
         } else {
             throw IllegalArgumentException("Activity must implement HomeContract.View")
         }
@@ -33,7 +32,7 @@ class BuildingsFragment: Fragment(), BuildingsContract.View {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBuildingBinding.inflate(inflater, container, false)
+        binding = FragmentResourceFieldBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,7 +40,7 @@ class BuildingsFragment: Fragment(), BuildingsContract.View {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = BuildingsAdapter(presenter)
+            adapter = ResourceFieldsAdapter(presenter)
         }
     }
 
@@ -49,20 +48,20 @@ class BuildingsFragment: Fragment(), BuildingsContract.View {
         binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 
-    override fun showBuildErrorDialog(buildingType: BuildingType) {
-        showSnackBar(getString(R.string.formatted_feedback_build_error, buildingType.name))
+    override fun showBuildErrorDialog(resourceType: ResourceType) {
+        showSnackBar(getString(R.string.formatted_feedback_build_error, resourceType.name))
     }
 
-    override fun showBuildSuccessDialog(buildingType: BuildingType) {
-        showSnackBar(getString(R.string.formatted_feedback_build_success, buildingType.name))
+    override fun showBuildSuccessDialog(resourceType: ResourceType) {
+        showSnackBar(getString(R.string.formatted_feedback_build_success, resourceType.name))
     }
 
-    override fun showUpgradeErrorDialog(buildingType: BuildingType) {
-        showSnackBar(getString(R.string.formatted_feedback_upgrade_error, buildingType.name))
+    override fun showUpgradeErrorDialog(resourceType: ResourceType) {
+        showSnackBar(getString(R.string.formatted_feedback_upgrade_error, resourceType.name))
     }
 
-    override fun showUpgradeSuccessDialog(buildingType: BuildingType) {
-        showSnackBar(getString(R.string.formatted_feedback_upgrade_success, buildingType.name))
+    override fun showUpgradeSuccessDialog(resourceType: ResourceType) {
+        showSnackBar(getString(R.string.formatted_feedback_upgrade_success, resourceType.name))
     }
 
     private fun showSnackBar(text: String) {

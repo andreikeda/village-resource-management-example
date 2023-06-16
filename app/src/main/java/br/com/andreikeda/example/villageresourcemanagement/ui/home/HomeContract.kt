@@ -2,22 +2,28 @@ package br.com.andreikeda.example.villageresourcemanagement.ui.home
 
 interface HomeContract {
     interface View {
+        fun gameOver()
         fun refreshData()
         fun setBuildingsTitle()
-        fun setVillageTitle()
+        fun setResourceFieldsTitle()
         fun setUnitsTitle()
+        fun setVillageTitle()
+        fun victory()
     }
 
     interface Presenter {
         fun onResume()
         fun onMenuItemBuildingsClicked()
-        fun onMenuItemVillageClicked()
+        fun onMenuItemResourceFieldsClicked()
         fun onMenuItemUnitsClicked()
+        fun onMenuItemVillageClicked()
+        fun restartGame()
     }
 
     interface Router {
         fun showBuildingsFragment()
-        fun showVillageFragment()
+        fun showResourceFieldsFragment()
         fun showUnitsFragment()
+        fun showVillageFragment()
     }
 }

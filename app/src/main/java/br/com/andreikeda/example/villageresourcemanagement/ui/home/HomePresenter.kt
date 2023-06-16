@@ -1,5 +1,7 @@
 package br.com.andreikeda.example.villageresourcemanagement.ui.home
 
+import br.com.andreikeda.example.villageresourcemanagement.domain.models.Game
+
 class HomePresenter(
     private val view: HomeContract.View,
     private val router: HomeContract.Router
@@ -13,9 +15,19 @@ class HomePresenter(
         router.showBuildingsFragment()
     }
 
+    override fun onMenuItemResourceFieldsClicked() {
+        view.setResourceFieldsTitle()
+        router.showResourceFieldsFragment()
+    }
+
     override fun onMenuItemVillageClicked() {
         view.setVillageTitle()
         router.showVillageFragment()
+    }
+
+    override fun restartGame() {
+        Game.start()
+        onResume()
     }
 
     override fun onMenuItemUnitsClicked() {

@@ -4,6 +4,7 @@ import br.com.andreikeda.example.villageresourcemanagement.domain.models.Buildin
 
 interface BuildingsContract {
     interface View {
+        fun notifyDataSetChanged()
         fun showBuildErrorDialog(buildingType: BuildingType)
         fun showBuildSuccessDialog(buildingType: BuildingType)
         fun showUpgradeErrorDialog(buildingType: BuildingType)

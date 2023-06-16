@@ -3,10 +3,14 @@
 
     <string name="button_build">Build</string>
     <string name="button_dismiss">Dismiss</string>
+    <string name="button_end_game">End Game</string>
     <string name="button_gather_resources">Gather Resources</string>
+    <string name="button_give_up">Give Up :(</string>
+    <string name="button_try_again">Try Again!</string>
     <string name="button_upgrade">Upgrade</string>
 
     <string name="formatted_days_played">Day %d</string>
+    <string name="formatted_available_unavailable" formatted="true">Built: %s\nNot Built: %s</string>
     <string name="formatted_feedback_build_error">Not possible to build %s. You need more resources!!</string>
     <string name="formatted_feedback_build_success">The %s was built successfully!!</string>
     <string name="formatted_feedback_upgrade_error">Not possible to upgrade %s. You need more resources!!</string>
@@ -22,12 +26,18 @@
 
     <string name="label_building_built">BUILT</string>
     <string name="label_building_not_built">NOT BUILT</string>
+    <string name="label_game_over">The end has come and you couldn\'t let your mark into the world.</string>
+    <string name="label_resource_field_available">AVAILABLE</string>
+    <string name="label_resource_field_unavailable">UNAVAILABLE</string>
+    <string name="label_victory">Congratulations! You are marked into the History as the Monument Creator! Now, go get some rest.</string>
 
-    <string name="menu_village">Village</string>
     <string name="menu_buildings">Buildings</string>
+    <string name="menu_resource_fields">Resource Fields</string>
     <string name="menu_units">Units</string>
+    <string name="menu_village">Village</string>
 
     <string name="title_buildings">Buildings</string>
-    <string name="title_village">Your Village</string>
+    <string name="title_resource_fields">Resource Fields</string>
     <string name="title_units">Units</string>
+    <string name="title_village">Your Village</string>
 </resources>
