@@ -131,21 +131,29 @@ class VillageUseCases: VillageCommands {
     private fun getBuildingUpgradeCost(buildingType: BuildingType, currentLevel: Int) =
         when (buildingType) {
             BARRACKS -> mapOf(
-                IRON to 15 * currentLevel,
-                WOOD to 10 * currentLevel
+                ROCK to 3 * currentLevel,
+                WOOD to 2 * currentLevel
             )
             WAREHOUSE -> mapOf(
-                CLAY to 20 * currentLevel,
-                WOOD to 15 * currentLevel
+                CLAY to 2 * currentLevel,
+                WOOD to 1 * currentLevel
             )
             GRANARY -> mapOf(
-                CLAY to 18 * currentLevel,
-                WOOD to 13 * currentLevel
+                CLAY to 2 * currentLevel,
+                WOOD to 1 * currentLevel
             )
             CITY_CENTER -> mapOf(
-                ROCK to 16 * currentLevel,
-                WOOD to 10 * currentLevel,
-                CLAY to 8 * currentLevel
+                ROCK to 2 * currentLevel,
+                WOOD to 1 * currentLevel,
+                CLAY to 1 * currentLevel
+            )
+            MONUMENT -> mapOf(
+                ROCK to 1000,
+                WOOD to 1000,
+                CLAY to 1000,
+                WHEAT to 500,
+                IRON to 250,
+                MEAT to 250
             )
         }
 

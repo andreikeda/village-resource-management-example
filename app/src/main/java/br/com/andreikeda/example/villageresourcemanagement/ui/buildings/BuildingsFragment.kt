@@ -45,6 +45,10 @@ class BuildingsFragment: Fragment(), BuildingsContract.View {
         }
     }
 
+    override fun notifyDataSetChanged() {
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
     override fun showBuildErrorDialog(buildingType: BuildingType) {
         showSnackBar(getString(R.string.formatted_feedback_build_error, buildingType.name))
     }

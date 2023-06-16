@@ -10,7 +10,10 @@ class BuildingsPresenter(
 ): BuildingsContract.Presenter {
     override fun onItemBuildClicked(buildingType: BuildingType) {
         if (Game.constructBuilding(buildingType)) {
-            view.showBuildSuccessDialog(buildingType)
+            view.run {
+                showBuildSuccessDialog(buildingType)
+                notifyDataSetChanged()
+            }
             parentView.refreshData()
         } else {
             view.showBuildErrorDialog(buildingType)
@@ -19,7 +22,10 @@ class BuildingsPresenter(
 
     override fun onItemUpgradeClicked(buildingType: BuildingType) {
         if (Game.upgradeBuilding(buildingType)) {
-            view.showUpgradeSuccessDialog(buildingType)
+            view.run {
+                showUpgradeSuccessDialog(buildingType)
+                notifyDataSetChanged()
+            }
             parentView.refreshData()
         } else {
             view.showUpgradeErrorDialog(buildingType)
