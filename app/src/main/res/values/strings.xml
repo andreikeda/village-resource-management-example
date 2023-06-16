@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Village Resource Management Example</string>
+
+    <string name="button_build">Build</string>
+    <string name="button_dismiss">Dismiss</string>
+    <string name="button_gather_resources">Gather Resources</string>
+    <string name="button_upgrade">Upgrade</string>
+
+    <string name="formatted_days_played">Day %d</string>
+    <string name="formatted_feedback_build_error">Not possible to build %s. You need more resources!!</string>
+    <string name="formatted_feedback_build_success">The %s was built successfully!!</string>
+    <string name="formatted_feedback_upgrade_error">Not possible to upgrade %s. You need more resources!!</string>
+    <string name="formatted_feedback_upgrade_success">The %s was upgraded successfully!!</string>
+    <string name="formatted_level_value">Level: %d</string>
+    <string name="formatted_resource_clay_value" formatted="true">Clay: %d/%d</string>
+    <string name="formatted_resource_iron_value" formatted="true">Iron: %d/%d</string>
+    <string name="formatted_resource_meat_value" formatted="true">Meat: %d/%d</string>
+    <string name="formatted_resource_rock_value" formatted="true">Rock: %d/%d</string>
+    <string name="formatted_resource_wheat_value" formatted="true">Wheat: %d/%d</string>
+    <string name="formatted_resource_wood_value" formatted="true">Wood: %d/%d</string>
+    <string name="formatted_unit_quantity">%d unit(s)</string>
+
+    <string name="label_building_built">BUILT</string>
+    <string name="label_building_not_built">NOT BUILT</string>
+
+    <string name="menu_village">Village</string>
+    <string name="menu_buildings">Buildings</string>
+    <string name="menu_units">Units</string>
+
+    <string name="title_buildings">Buildings</string>
+    <string name="title_village">Your Village</string>
+    <string name="title_units">Units</string>
 </resources>
