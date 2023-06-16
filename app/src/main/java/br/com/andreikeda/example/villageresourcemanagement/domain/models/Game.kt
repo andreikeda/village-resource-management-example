@@ -1,7 +1,9 @@
 package br.com.andreikeda.example.villageresourcemanagement.domain.models
 
+import br.com.andreikeda.example.villageresourcemanagement.Constants.DAYS_LIMIT
 import br.com.andreikeda.example.villageresourcemanagement.domain.creators.VillageFactory
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.BuildingType.GRANARY
+import br.com.andreikeda.example.villageresourcemanagement.domain.models.BuildingType.MONUMENT
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.BuildingType.WAREHOUSE
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.ResourceType.CLAY
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.ResourceType.IRON
@@ -13,22 +15,31 @@ import br.com.andreikeda.example.villageresourcemanagement.domain.usecases.Villa
 import br.com.andreikeda.example.villageresourcemanagement.domain.usecases.VillageUseCases
 
 object Game {
+    enum class Status {
+        GAME_OVER,
+        ONGOING,
+        VICTORY
+    }
     private val villageUseCase: VillageCommands = VillageUseCases()
 
     private lateinit var village: Village
 
     var daysPlayed = 0
 
-    fun endDay() {
+    fun endDay(): Status {
         daysPlayed++
+        if (daysPlayed >= DAYS_LIMIT) {
+            return Status.GAME_OVER
+        }
+        if (village.buildings.containsKey(MONUMENT)) {
+            return Status.VICTORY
+        }
         villageUseCase.run {
             gatherResources(village)
             consumeWheat(village)
-            if ((village.resources[WHEAT]?.quantity ?: 0) > 0) {
-                // todo: create a random unit
-            }
             // todo: call other methods
         }
+        return Status.ONGOING
     }
 
     fun constructBuilding(buildingType: BuildingType) =
