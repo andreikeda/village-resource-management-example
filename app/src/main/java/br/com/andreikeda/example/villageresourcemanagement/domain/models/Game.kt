@@ -48,11 +48,23 @@ object Game {
     fun constructResourceField(resourceType: ResourceType) =
         villageUseCase.construct(village, resourceType)
 
+    fun getBuildingsBuilt() =
+        village.buildings
+
+    fun getBuildingsNotBuilt() =
+        BuildingType.values().filter { it !in getBuildingsBuilt() }
+
     fun getBuildingLevel(buildingType: BuildingType) =
         village.buildings[buildingType]?.level ?: 0
 
     fun getResourceFieldLevel(resourceType: ResourceType) =
         village.resourceFields[resourceType]?.level ?: 0
+
+    fun getResourceFieldsBuilt() =
+        village.resourceFields
+
+    fun getResourceFieldsNotBuilt() =
+        ResourceType.values().filter { it !in getResourceFieldsBuilt() }
 
     fun getResourceClayCapacity() =
         storageCapacity(CLAY)
@@ -89,6 +101,12 @@ object Game {
 
     fun getResourceWoodQuantity() =
         resourceQuantity(WOOD)
+
+    fun getUnitsAvailable() =
+        village.units
+
+    fun getUnitsUnavailable() =
+        UnitType.values().filter { it !in getUnitsAvailable() }
 
     fun getUnitQuantity(unitType: UnitType) =
         village.units[unitType]?.count ?: 0

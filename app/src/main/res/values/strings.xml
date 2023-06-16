@@ -10,6 +10,7 @@
     <string name="button_upgrade">Upgrade</string>
 
     <string name="formatted_days_played">Day %d</string>
+    <string name="formatted_available_unavailable" formatted="true">Built: %s\nNot Built: %s</string>
     <string name="formatted_feedback_build_error">Not possible to build %s. You need more resources!!</string>
     <string name="formatted_feedback_build_success">The %s was built successfully!!</string>
     <string name="formatted_feedback_upgrade_error">Not possible to upgrade %s. You need more resources!!</string>

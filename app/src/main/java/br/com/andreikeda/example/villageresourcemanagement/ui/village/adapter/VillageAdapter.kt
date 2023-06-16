@@ -3,7 +3,9 @@ package br.com.andreikeda.example.villageresourcemanagement.ui.village.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.andreikeda.example.villageresourcemanagement.R
 import br.com.andreikeda.example.villageresourcemanagement.databinding.ItemCardVillageBinding
+import br.com.andreikeda.example.villageresourcemanagement.domain.models.Game
 
 class VillageAdapter : RecyclerView.Adapter<VillageAdapter.ViewHolder>() {
     enum class CardType {
@@ -14,18 +16,34 @@ class VillageAdapter : RecyclerView.Adapter<VillageAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemCardVillageBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cardType: CardType) {
+            val context = binding.root.context
             when (cardType) {
                 CardType.RESOURCE_FIELDS -> {
-                    binding.tvCardTitle.text = "Resource Fields"
-                    binding.tvCardDescription.text = "Resource Fields Description"
+                    binding.tvCardTitle.text = context.getString(R.string.title_resource_fields)
+                    binding.tvCardDescription.text =
+                        context.getString(
+                            R.string.formatted_available_unavailable,
+                            Game.getResourceFieldsBuilt().keys.toString(),
+                            Game.getResourceFieldsNotBuilt().toString()
+                        )
                 }
                 CardType.BUILDINGS -> {
-                    binding.tvCardTitle.text = "Buildings"
-                    binding.tvCardDescription.text = "Buildings Description"
+                    binding.tvCardTitle.text = context.getString(R.string.title_buildings)
+                    binding.tvCardDescription.text =
+                        context.getString(
+                            R.string.formatted_available_unavailable,
+                            Game.getBuildingsBuilt().keys.toString(),
+                            Game.getBuildingsNotBuilt().toString()
+                        )
                 }
                 CardType.UNITS -> {
-                    binding.tvCardTitle.text = "Units"
-                    binding.tvCardDescription.text = "Units Description"
+                    binding.tvCardTitle.text = context.getString(R.string.title_units)
+                    binding.tvCardDescription.text =
+                        context.getString(
+                            R.string.formatted_available_unavailable,
+                            Game.getUnitsAvailable().keys.toString(),
+                            Game.getUnitsUnavailable().toString()
+                        )
                 }
             }
         }

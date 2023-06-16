@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_buildings" android:title="@string/menu_buildings"/>
-    <item android:id="@+id/menu_village" android:title="@string/menu_village"/>
-    <item android:id="@+id/menu_resource_fields" android:title="@string/menu_resource_fields"/>
-    <item android:id="@+id/menu_units" android:title="@string/menu_units"/>
+    <item android:id="@+id/menu_buildings" android:title="@string/menu_buildings" android:icon="@drawable/ic_buildings"/>
+    <item android:id="@+id/menu_village" android:title="@string/menu_village" android:icon="@drawable/ic_village"/>
+    <item android:id="@+id/menu_resource_fields" android:title="@string/menu_resource_fields" android:icon="@drawable/ic_resource_field"/>
+    <item android:id="@+id/menu_units" android:title="@string/menu_units" android:icon="@drawable/ic_units"/>
 </menu>
