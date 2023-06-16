@@ -22,6 +22,7 @@ interface VillageCommands {
     fun newUnitIsBorn(village: Village, unitType: UnitType)
     fun resourceQuantity(village: Village, resourceType: ResourceType): Int
     fun storageCapacity(village: Village, building: Building?): Int
+    fun unitsAvailableFromResourceFields(village: Village): List<UnitType>
     fun unitDies(village: Village, unitType: UnitType)
     fun upgradeBuilding(village: Village, buildingType: BuildingType): Boolean
     fun upgradeResourceField(village: Village, resourceType: ResourceType): Boolean
@@ -112,6 +113,11 @@ class VillageUseCases: VillageCommands {
 
     override fun storageCapacity(village: Village, building: Building?) =
         building?.let { Constants.CAPACITY_ARRAY[it.level] } ?: run { Constants.MIN_CAPACITY }
+
+    override fun unitsAvailableFromResourceFields(village: Village) =
+        UnitType.values().filter { unitType ->
+            hasResourceFieldRequirement(unitType, village.resourceFields)
+        }
 
     override fun unitDies(village: Village, unitType: UnitType) {
         village.units[unitType]?.let {
