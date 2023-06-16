@@ -2,6 +2,8 @@
 
 This is an example project for a resource management game implemented in Kotlin. The game allows players to manage resources, upgrade buildings, and create units in their village.
 
+![me](https://github.com/andreikeda/village-resource-management-example/blob/master/ezgif-2-108347fdb1.gif)
+
 ## Features ✨
 
 - Collect and manage resources such as rock, iron, clay, wood, meat, and crop.
