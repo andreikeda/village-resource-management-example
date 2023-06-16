@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Village Resource Management Example</string>
+
+    <string name="button_build">Construir</string>
+    <string name="button_dismiss">Fechar</string>
+    <string name="button_end_game">Encerrar Jogo</string>
+    <string name="button_gather_resources">Coletar Recursos</string>
+    <string name="button_give_up">Desistir :(</string>
+    <string name="button_try_again">Tentar Novamente!</string>
+    <string name="button_upgrade">Aprimorar</string>
+
+    <string name="formatted_days_played">Dia %d</string>
+    <string name="formatted_feedback_build_error">Não foi possível construir %s. MOTIVO: Recursos insuficientes!!</string>
+    <string name="formatted_feedback_build_success">O(a) %s foi construído!!</string>
+    <string name="formatted_feedback_upgrade_error">Não foi possível aprimorar %s. MOTIVO: Recursos insuficientes!!</string>
+    <string name="formatted_feedback_upgrade_success">O(a) %s foi aprimorado!!</string>
+    <string name="formatted_level_value">Nível: %d</string>
+    <string name="formatted_resource_clay_value" formatted="true">Barro: %d/%d</string>
+    <string name="formatted_resource_iron_value" formatted="true">Ferro: %d/%d</string>
+    <string name="formatted_resource_meat_value" formatted="true">Carne: %d/%d</string>
+    <string name="formatted_resource_rock_value" formatted="true">Pedra: %d/%d</string>
+    <string name="formatted_resource_wheat_value" formatted="true">Trigo: %d/%d</string>
+    <string name="formatted_resource_wood_value" formatted="true">Madeira: %d/%d</string>
+    <string name="formatted_unit_quantity">%d unidade(s)</string>
+
+    <string name="label_building_built">CONSTRUÍDO</string>
+    <string name="label_building_not_built">NÃO CONSTRUÍDO</string>
+    <string name="label_game_over">O Fim chegou e você não foi capaz de deixar sua marca no mundo.</string>
+    <string name="label_resource_field_available">DISPONÍVEL</string>
+    <string name="label_resource_field_unavailable">INDISPONÍVEL</string>
+    <string name="label_victory">Parabéns! Você deixou sua marca na História como o Criador de Monumento! Agora, vá tirar um cochilo.</string>
+
+    <string name="menu_buildings">Construções</string>
+    <string name="menu_resource_fields">Campos de Recurso</string>
+    <string name="menu_units">Unidades</string>
+    <string name="menu_village">Aldeia</string>
+
+    <string name="title_buildings">Construções</string>
+    <string name="title_resource_fields">Campos de Recurso</string>
+    <string name="title_units">Unidades</string>
+    <string name="title_village">Sua Aldeia</string>
+</resources>
