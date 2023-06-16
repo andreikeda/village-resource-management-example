@@ -4,20 +4,23 @@ interface HomeContract {
     interface View {
         fun refreshData()
         fun setBuildingsTitle()
-        fun setVillageTitle()
+        fun setResourceFieldsTitle()
         fun setUnitsTitle()
+        fun setVillageTitle()
     }
 
     interface Presenter {
         fun onResume()
         fun onMenuItemBuildingsClicked()
-        fun onMenuItemVillageClicked()
+        fun onMenuItemResourceFieldsClicked()
         fun onMenuItemUnitsClicked()
+        fun onMenuItemVillageClicked()
     }
 
     interface Router {
         fun showBuildingsFragment()
-        fun showVillageFragment()
+        fun showResourceFieldsFragment()
         fun showUnitsFragment()
+        fun showVillageFragment()
     }
 }

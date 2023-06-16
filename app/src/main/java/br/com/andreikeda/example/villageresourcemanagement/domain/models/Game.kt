@@ -45,8 +45,14 @@ object Game {
     fun constructBuilding(buildingType: BuildingType) =
         villageUseCase.construct(village, buildingType)
 
+    fun constructResourceField(resourceType: ResourceType) =
+        villageUseCase.construct(village, resourceType)
+
     fun getBuildingLevel(buildingType: BuildingType) =
         village.buildings[buildingType]?.level ?: 0
+
+    fun getResourceFieldLevel(resourceType: ResourceType) =
+        village.resourceFields[resourceType]?.level ?: 0
 
     fun getResourceClayCapacity() =
         storageCapacity(CLAY)
@@ -90,12 +96,18 @@ object Game {
     fun hasBuilding(buildingType: BuildingType) =
         village.buildings.containsKey(buildingType)
 
+    fun hasResourceField(resourceType: ResourceType) =
+        village.resourceFields.containsKey(resourceType)
+
     fun start() {
         village = VillageFactory.newInstance()
     }
 
     fun upgradeBuilding(buildingType: BuildingType) =
         villageUseCase.upgradeBuilding(village, buildingType)
+
+    fun upgradeResourceField(resourceType: ResourceType) =
+        villageUseCase.upgradeResourceField(village, resourceType)
 
     private fun resourceQuantity(resourceType: ResourceType) =
         villageUseCase.resourceQuantity(village, resourceType)

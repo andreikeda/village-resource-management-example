@@ -22,12 +22,16 @@
 
     <string name="label_building_built">BUILT</string>
     <string name="label_building_not_built">NOT BUILT</string>
+    <string name="label_resource_field_available">AVAILABLE</string>
+    <string name="label_resource_field_unavailable">UNAVAILABLE</string>
 
-    <string name="menu_village">Village</string>
     <string name="menu_buildings">Buildings</string>
+    <string name="menu_resource_fields">Resource Fields</string>
     <string name="menu_units">Units</string>
+    <string name="menu_village">Village</string>
 
     <string name="title_buildings">Buildings</string>
-    <string name="title_village">Your Village</string>
+    <string name="title_resource_fields">Resource Fields</string>
     <string name="title_units">Units</string>
+    <string name="title_village">Your Village</string>
 </resources>

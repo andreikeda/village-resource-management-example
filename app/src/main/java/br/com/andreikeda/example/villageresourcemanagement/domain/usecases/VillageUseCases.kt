@@ -2,6 +2,7 @@ package br.com.andreikeda.example.villageresourcemanagement.domain.usecases
 
 import br.com.andreikeda.example.villageresourcemanagement.Constants
 import br.com.andreikeda.example.villageresourcemanagement.domain.creators.BuildingFactory
+import br.com.andreikeda.example.villageresourcemanagement.domain.creators.ResourceFieldFactory
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.Building
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.BuildingType
 import br.com.andreikeda.example.villageresourcemanagement.domain.models.BuildingType.*
@@ -15,6 +16,7 @@ import br.com.andreikeda.example.villageresourcemanagement.domain.models.Village
 
 interface VillageCommands {
     fun construct(village: Village, buildingType: BuildingType): Boolean
+    fun construct(village: Village, resourceType: ResourceType): Boolean
     fun consumeWheat(village: Village)
     fun gatherResources(village: Village)
     fun newUnitIsBorn(village: Village, unitType: UnitType)
@@ -22,6 +24,7 @@ interface VillageCommands {
     fun storageCapacity(village: Village, building: Building?): Int
     fun unitDies(village: Village, unitType: UnitType)
     fun upgradeBuilding(village: Village, buildingType: BuildingType): Boolean
+    fun upgradeResourceField(village: Village, resourceType: ResourceType): Boolean
 }
 
 class VillageUseCases: VillageCommands {
@@ -33,14 +36,27 @@ class VillageUseCases: VillageCommands {
             if (hasSufficientResources(village, requiredResources)) {
                 consumeResources(village, requiredResources)
                 village.buildings[buildingType] = BuildingFactory.newInstance(buildingType)
-                println("Successfully created ${buildingType.name}")
+                return village.buildings.containsKey(buildingType)
             } else {
                 println("Insufficient resources to upgrade ${buildingType.name}")
             }
         } else {
             println("Building already constructed!")
         }
-        return village.buildings.containsKey(buildingType)
+        return false
+    }
+
+    override fun construct(village: Village, resourceType: ResourceType): Boolean {
+        val resourceField = village.resourceFields[resourceType]
+        if (resourceField == null) {
+            val requiredResources = getResourceFieldUpgradeCost(resourceType, 1)
+            if (hasSufficientResources(village, requiredResources)) {
+                consumeResources(village, requiredResources)
+                village.resourceFields[resourceType] = ResourceFieldFactory.newInstance(resourceType)
+                return village.resourceFields.containsKey(resourceType)
+            }
+        }
+        return false
     }
 
     override fun consumeWheat(village: Village) {
@@ -125,6 +141,20 @@ class VillageUseCases: VillageCommands {
         return false
     }
 
+    override fun upgradeResourceField(village: Village, resourceType: ResourceType): Boolean {
+        val resourceField = village.resourceFields[resourceType]
+        resourceField?.let { field ->
+            val requiredResources = getResourceFieldUpgradeCost(resourceType, field.level)
+            if (hasSufficientResources(village, requiredResources)) {
+                consumeResources(village, requiredResources)
+                field.level++
+                village.resourceFields[resourceType] = field
+                return true
+            }
+        }
+        return false
+    }
+
     private fun getCollectorCount(village: Village, unitType: UnitType) =
         village.units[unitType]?.count ?: 0
 
@@ -154,6 +184,36 @@ class VillageUseCases: VillageCommands {
                 WHEAT to 500,
                 IRON to 250,
                 MEAT to 250
+            )
+        }
+
+    private fun getResourceFieldUpgradeCost(resourceType: ResourceType, currentLevel: Int) =
+        when (resourceType) {
+            WHEAT -> mapOf(
+                CLAY to 1 * currentLevel,
+                WOOD to 2 * currentLevel
+            )
+            WOOD -> mapOf(
+                ROCK to 2 * currentLevel,
+                WHEAT to 1 * currentLevel
+            )
+            ROCK -> mapOf(
+                CLAY to 2 * currentLevel,
+                WHEAT to (1.5 * currentLevel).toInt()
+            )
+            MEAT -> mapOf(
+                WOOD to 1 * currentLevel,
+                ROCK to (1.5 * currentLevel).toInt(),
+                CLAY to (0.5 * currentLevel).toInt()
+            )
+            IRON -> mapOf(
+                ROCK to 2 * currentLevel,
+                WOOD to (1.75 * currentLevel).toInt(),
+                WHEAT to (0.5 * currentLevel).toInt()
+            )
+            CLAY -> mapOf(
+                WOOD to 1 * currentLevel,
+                ROCK to 1 * currentLevel
             )
         }
 
