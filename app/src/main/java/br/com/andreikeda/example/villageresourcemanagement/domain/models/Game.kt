@@ -101,6 +101,7 @@ object Game {
 
     fun start() {
         village = VillageFactory.newInstance()
+        daysPlayed = 0
     }
 
     fun upgradeBuilding(buildingType: BuildingType) =

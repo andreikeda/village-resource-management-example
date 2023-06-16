@@ -1,6 +1,7 @@
 package br.com.andreikeda.example.villageresourcemanagement.ui.home
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import br.com.andreikeda.example.villageresourcemanagement.R
@@ -22,7 +23,7 @@ class HomeActivity: AppCompatActivity(), HomeContract.View, HomeContract.Router 
         setContentView(binding.root)
 
         mPresenter = HomePresenter(this, this)
-        Game.start()
+        mPresenter.restartGame()
 
         binding.bottomNavigation.run {
             setOnItemSelectedListener { menuItem ->
@@ -46,6 +47,19 @@ class HomeActivity: AppCompatActivity(), HomeContract.View, HomeContract.Router 
         mPresenter.onResume()
     }
 
+    override fun gameOver() {
+        AlertDialog.Builder(this)
+            .setMessage(R.string.label_game_over)
+            .setCancelable(false)
+            .setNegativeButton(R.string.button_give_up) {
+                dialog, which -> finish()
+            }
+            .setPositiveButton(R.string.button_try_again) {
+                dialog, which -> mPresenter.restartGame()
+            }
+            .show()
+    }
+
     override fun refreshData() {
         setTopView()
     }
@@ -60,6 +74,16 @@ class HomeActivity: AppCompatActivity(), HomeContract.View, HomeContract.Router 
 
     override fun setVillageTitle() {
         setTitle(R.string.title_village)
+    }
+
+    override fun victory() {
+        AlertDialog.Builder(this)
+            .setMessage(R.string.label_victory)
+            .setCancelable(false)
+            .setNeutralButton(R.string.button_end_game) {
+                dialog, which -> finish()
+            }
+            .show()
     }
 
     override fun setUnitsTitle() {
