@@ -11,6 +11,7 @@
     <string name="button_upgrade">Aprimorar</string>
 
     <string name="formatted_days_played">Dia %d</string>
+    <string name="formatted_available_unavailable" formatted="true">Construído: %s\nNão Construído: %s</string>
     <string name="formatted_feedback_build_error">Não foi possível construir %s. MOTIVO: Recursos insuficientes!!</string>
     <string name="formatted_feedback_build_success">O(a) %s foi construído!!</string>
     <string name="formatted_feedback_upgrade_error">Não foi possível aprimorar %s. MOTIVO: Recursos insuficientes!!</string>

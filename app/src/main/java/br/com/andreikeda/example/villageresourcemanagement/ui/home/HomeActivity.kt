@@ -1,8 +1,11 @@
 package br.com.andreikeda.example.villageresourcemanagement.ui.home
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import br.com.andreikeda.example.villageresourcemanagement.R
 import br.com.andreikeda.example.villageresourcemanagement.databinding.ActivityHomeBinding
